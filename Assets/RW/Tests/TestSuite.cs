@@ -89,4 +89,25 @@ public class TestSuite
         // 2
         Assert.AreEqual(game.score, 1);
     }
+    [UnityTest]
+    public IEnumerator LeftMovementWorks()
+    {
+
+        float initialXpos = game.GetShip().transform.position.x;
+        game.GetShip().MoveLeft();
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.Greater(initialXpos, game.GetShip().transform.position.y);
+    }
+
+    [UnityTest]
+    public IEnumerator RightMovementWorks()
+    {
+
+        float initialXpos = game.GetShip().transform.position.x;
+        game.GetShip().MoveRight();
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.Greater(initialXpos, game.GetShip().transform.position.y);
+    }
 }

@@ -110,4 +110,12 @@ public class TestSuite
 
         Assert.Greater(initialXpos, game.GetShip().transform.position.y);
     }
+
+    [UnityTest]
+    public IEnumerator ScoreResetOnNewGame()
+    {
+        game.NewGame();
+        yield return new WaitForSeconds(0.1f);
+        Assert.AreEqual(game.score, 0);
+    }
 }
